@@ -8,13 +8,13 @@ type Query {
     mpbrandCategories (
         id: Int @doc(description: "Id of the brand category")
     ): [MageplazaBrandsCategories]
-    @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\BrandCategory") @doc(description: "The brand category query searches for brand categories that match the criteria specified in the search and filter attributes")
+    @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\BrandCategory") @doc(description: "The query searches for brand categories that match the searched criteria and filtered attributes")
 }
 input MageplazaBrandsFilterInput {
     brand_id: FilterTypeInput @doc(description: "Brand Id")
     option_id: FilterTypeInput @doc(description: "Option Id")
-    url_key: FilterTypeInput @doc(description: "Url Key")
-    is_featured: FilterTypeInput @doc(description: "Is Featured")
+    url_key: FilterTypeInput @doc(description: "URL Key")
+    is_featured: FilterTypeInput @doc(description: "Show brand on Featured block")
     value: FilterTypeInput @doc(description: "Brand Name")
     default_value: FilterTypeInput @doc(description: "Brand Default Value")
 }
@@ -34,7 +34,7 @@ type MageplazaBrands {
   page_title: String @doc(description: "Brand Page Title")
   url_key: String @doc(description: "Url Key")
   image: String @doc(description: "Brand Image")
-  is_featured: Int @doc(description: "Is Featured")
+  is_featured: Int @doc(description: "Show brand on Featured block")
   short_description: String @doc(description: "Short Description")
   description: String @doc(description: "Description")
   static_block: String @doc(description: "Static Block")
@@ -54,13 +54,13 @@ type MageplazaBrandsCategories {
   status: Int @doc(description: "Status")
   store_ids: String @doc(description: "Store Ids")
   name: String @doc(description: "Name")
-  url_key: String @doc(description: "Url Key")
+  url_key: String @doc(description: "URL Key")
   meta_title: String @doc(description: "Meta Title")
   meta_keywords: String @doc(description: "Meta Keywords")
   meta_description: String @doc(description: "Meta Description")
   meta_robots: String @doc(description: "Meta Robots")
-  created_at: String @doc(description: "Created At")
-  updated_at: String @doc(description: "Updated At")
+  created_at: String @doc(description: "Creation date of the category")
+  updated_at: String @doc(description: "Last modification date of the category")
   mpbrand: [MageplazaBrands] @doc(description: "The list of brands assigned to the category") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Category\\Brands")
 }
 
