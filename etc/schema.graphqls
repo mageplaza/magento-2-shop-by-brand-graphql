@@ -33,7 +33,7 @@ type MageplazaBrands {
   store_id: Int @doc(description: "Store Id")
   page_title: String @doc(description: "Brand Page Title")
   url_key: String @doc(description: "Url Key")
-  image: BrandImage @doc(description: "Brand Image")
+  image: BrandImage @doc(description: "Brand Image URL") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Brands\\BrandImage")
   is_featured: Int @doc(description: "Show brand on Featured block")
   short_description: String @doc(description: "Short Description")
   description: String @doc(description: "Description")
@@ -42,10 +42,6 @@ type MageplazaBrands {
   meta_keywords: String @doc(description: "Meta Keywords")
   meta_description: String @doc(description: "Meta Description")
   mpbrandCategories: [MageplazaBrandsCategories] @doc(description: "The categories assigned to a brand") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Categories")
-}
-
-type BrandImage @doc(description: "Brand image information. Contains image relative path, URL") {
-    url: String @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Brands\\BrandImage")
 }
 
 type MageplazaBrandsCategoriesOutput {
