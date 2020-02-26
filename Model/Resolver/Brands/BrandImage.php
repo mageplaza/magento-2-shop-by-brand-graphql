@@ -55,10 +55,6 @@ class BrandImage implements ResolverInterface
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        if (!isset($value['image'])) {
-            throw new LocalizedException(__('"image" value should be specified'));
-        }
-
         if (!isset($value['model'])) {
             throw new LocalizedException(__('"model" value should be specified'));
         }
