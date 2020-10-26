@@ -23,6 +23,7 @@ declare(strict_types=1);
 namespace Mageplaza\ShopbybrandGraphQl\Model\Resolver\Brands\FilterArgument;
 
 use Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesInterface;
+use Mageplaza\Shopbybrand\Helper\Data;
 
 /**
  * Class EntityAttributesForAst
@@ -41,14 +42,22 @@ class EntityAttributesForAst implements FieldEntityAttributesInterface
         'tdv.value',
         'tdv.default_value'
     ];
+    /**
+     * @var Data
+     */
+    protected $helperData;
 
     /**
      * EntityAttributesForAst constructor.
      *
+     * @param Data $helperData
      * @param array $additionalAttributes
      */
-    public function __construct(array $additionalAttributes = [])
-    {
+    public function __construct(
+        Data $helperData,
+        array $additionalAttributes = []
+    ) {
+        $this->helperData = $helperData;
         $this->additionalAttributes = array_merge($this->additionalAttributes, $additionalAttributes);
     }
 
@@ -60,6 +69,10 @@ class EntityAttributesForAst implements FieldEntityAttributesInterface
         $fields = [];
         foreach ($this->additionalAttributes as $attribute) {
             $fields[$attribute] = 'String';
+        }
+
+        if ($this->helperData->versionCompare('2.3.4')) {
+            return $fields;
         }
 
         return array_keys($fields);
