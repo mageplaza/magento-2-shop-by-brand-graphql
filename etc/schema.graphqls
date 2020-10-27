@@ -2,7 +2,8 @@ type Query {
     mpbrand(
         filter: MageplazaBrandsFilterInput @doc(description: "Identifies which Mageplaza Brands attributes to search for and return."),
         pageSize: Int = 5 @doc(description: "Number of items should be shown on the page"),
-        currentPage: Int = 1 @doc(description: "Allow page number to start from 1")
+        currentPage: Int = 1 @doc(description: "Allow page number to start from 1"),
+        storeId: Int = 0 @doc(description: "Store View Id")
     ): MageplazaBrandsOutput
     @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Brands") @doc(description: "Queries search for Mageplaza Brands that match the filtered criteria.")
     mpbrandCategories (

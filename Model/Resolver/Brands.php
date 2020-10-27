@@ -89,6 +89,10 @@ class Brands implements ResolverInterface
         if (!isset($args['filter'])) {
             throw new GraphQlInputException(__("'filter' input argument is required."));
         }
+        $storeId = null;
+        if (isset($args['storeId'])) {
+            $storeId = $args['storeId'];
+        }
         $filter = [];
         foreach ($args['filter'] as $key => $item) {
             if ($key === 'value' || $key === 'default_value') {
@@ -103,7 +107,7 @@ class Brands implements ResolverInterface
         $searchCriteria = $this->searchCriteriaBuilder->build($field->getName(), $args);
         $searchCriteria->setCurrentPage($args['currentPage']);
         $searchCriteria->setPageSize($args['pageSize']);
-        $collection = $this->dataProvider->getData($searchCriteria);
+        $collection = $this->dataProvider->getData($searchCriteria, $storeId);
         $brands     = [];
         foreach ($collection as $brand) {
             $brandData          = $brand->getData();
