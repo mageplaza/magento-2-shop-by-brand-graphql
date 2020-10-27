@@ -10,6 +10,10 @@ type Query {
         id: Int @doc(description: "Id of the brand category")
     ): [MageplazaBrandsCategories]
     @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\BrandCategory") @doc(description: "The query searches for brand categories that match the searched criteria and filtered attributes")
+    brandConfig (
+        storeId: Int = 0 @doc(description: "Store View Id")
+    ) : BrandConfig
+    @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\BrandConfigResolver") @doc(description: "The brand config query") @cache(cacheable: false)
 }
 input MageplazaBrandsFilterInput {
     brand_id: FilterTypeInput @doc(description: "Brand Id")
@@ -67,4 +71,19 @@ type MageplazaBrandsCategories {
 
 interface ProductInterface {
     mpbrand: MageplazaBrands @doc(description: "Mageplaza Shopbybrand Attribute data") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Product\\Brand")
+}
+
+type BrandConfig @doc(description: "The type contains information about a brand config") {
+    brand_list_name : String @doc(description: "The Brand List Name assigned to the store")
+    brandlist_style : Int @doc(description: "Style on Brand List Page. List: 0, Alphabet: 1")
+    display_option : Int @doc(description: "The display option on Brand List Page. Logo Only: 0, Logo and Label: 1, Label Only: 2")
+    brand_list_logo_width : Int @doc(description: "Logo Width on Brand List Page")
+    brand_list_logo_height : Int @doc(description: "Logo Height on Brand List Page")
+    color : String @doc(description: "Color on Brand List Page")
+    show_description : Boolean @doc(description: "Show Brand description on Brand List Page")
+    show_product_qty : Boolean @doc(description: "Show product qty on Brand List Page")
+    custom_css : String @doc(description: "Custom css on Brand List Page")
+    show_brand_info : String @doc(description: "Show brand info on product page")
+    logo_width_on_product_page : Int @doc(description: "logo Width on product page")
+    logo_height_on_product_page : Int @doc(description: "logo Height on product page")
 }
