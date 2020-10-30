@@ -7,7 +7,7 @@ Mageplaza Shop By Brand Extension supports getting and pushing data on the websi
 Run the following command in Magento 2 root folder:
 
 ```
-composer require mageplaza/magento-2-shop-by-brand-graphql
+composer require mageplaza/module-shop-by-brand-graphql
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 ```
