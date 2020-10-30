@@ -58,13 +58,15 @@ class DataProvider
 
     /**
      * @param SearchCriteriaInterface $searchCriteria
+     * @param string|null $storeId
      *
      * @return Collection
      */
     public function getData(
-        SearchCriteriaInterface $searchCriteria
+        SearchCriteriaInterface $searchCriteria,
+        $storeId
     ): Collection {
-        $collection = $this->helperData->getBrandList();
+        $collection = $this->helperData->getBrandList(null, null, $storeId);
         $this->collectionProcessor->process($searchCriteria, $collection);
 
         return $collection;
