@@ -1,0 +1,7 @@
+"The module is disabled","The module is disabled"
+"Brand category doesn't exist","Brand category doesn't exist"
+"currentPage value must be greater than 0.","currentPage value must be greater than 0."
+"pageSize value must be greater than 0.","pageSize value must be greater than 0."
+"'filter' input argument is required.","'filter' input argument is required."
+"currentPage value %1 specified is greater than the %2 page(s) available.","currentPage value %1 specified is greater than the %2 page(s) available."
+"""model"" value should be specified","""model"" value should be specified"

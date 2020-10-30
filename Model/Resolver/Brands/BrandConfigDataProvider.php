@@ -22,7 +22,6 @@ declare(strict_types=1);
 
 namespace Mageplaza\ShopbybrandGraphQl\Model\Resolver\Brands;
 
-use Magento\Store\Api\Data\StoreInterface;
 use Mageplaza\Shopbybrand\Api\BrandRepositoryInterface;
 
 /**
