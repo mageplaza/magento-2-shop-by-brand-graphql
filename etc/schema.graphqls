@@ -46,6 +46,7 @@ type MageplazaBrands {
   meta_title: String @doc(description: "Meta Title")
   meta_keywords: String @doc(description: "Meta Keywords")
   meta_description: String @doc(description: "Meta Description")
+  product_quantity: Int @doc(description: "Product Quantity of Brand")
   mpbrandCategories: [MageplazaBrandsCategories] @doc(description: "The categories assigned to a brand") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Categories")
 }
 
