@@ -1,5 +1,7 @@
 # Magento 2 Shop By Brand GraphQL/PWA
 
+**Magento 2 Shop By Brand GraphQL is now a part of Mageplaza Shop By Brand extension that supports GraphQL features.** This supports PWA compatibility with a lot of advantages and convenience. The extension supports getting and pushing data on the website with GraphQl, this support for PWA Studio.
+
 [Mageplaza Shop By Brand for Magento 2](https://www.mageplaza.com/magento-2-shop-by-brand/) enables you to create a separate page to display brands that have products available in your store. 
 
 With this kind of showcasing brands, customers who prefer shopping by brand will quickly find the brands they are looking for. When customers type in some first character of their favorite brand in the instant search box, the suggested brands will appear at the drop-down, so you can swiftly pick up your favorite and go to more details of the brand. 
@@ -9,8 +11,6 @@ With each brand page, there will be essential information included, such as bran
 Based on your store’ scale and customers’ demand, you can add as many brands as you want to your store's brand page at once without manual processing one by one. You only need one click to bulk import various brands via a CSV file. The brands will be updated automatically to the brand page with complete information and brand images. 
 
 The extension supports you in creating brand listing and brand pages with SEO-friendly URL and custom meta tags. Your pages will be more likely to rank higher on the search engine results page and let more customers know about this exciting feature of your store. 
-
-A good news is that **Magento 2 Shop By Brand GraphQL is now a part of Mageplaza Shop By Brand extension that supports GraphQL features.** This supports PWA compatibility with a lot of advantages and convenience. The extension supports getting and pushing data on the website with GraphQl, this support for PWA Studio.
 
 ## 1. How to install
 
