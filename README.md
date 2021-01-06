@@ -1,4 +1,4 @@
-# Magento 2 Shop By Brand GraphQL/PWA
+# Magento 2 Shop By Brand GraphQL
 
 **Magento 2 Shop By Brand GraphQL is now a part of Mageplaza Shop By Brand extension that supports GraphQL features.** This supports PWA compatibility with a lot of advantages and convenience. The extension supports getting and pushing data on the website with GraphQl, this support for PWA Studio.
 
