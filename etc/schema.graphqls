@@ -20,6 +20,7 @@ input MageplazaBrandsFilterInput {
     option_id: FilterTypeInput @doc(description: "Option Id")
     url_key: FilterTypeInput @doc(description: "URL Key")
     is_featured: FilterTypeInput @doc(description: "Show brand on Featured block")
+    is_display: FilterTypeInput @doc(description: "Show brand on frontend")
     value: FilterTypeInput @doc(description: "Brand Name")
     default_value: FilterTypeInput @doc(description: "Brand Default Value")
 }
@@ -40,6 +41,7 @@ type MageplazaBrands {
   url_key: String @doc(description: "Url Key")
   image: String @doc(description: "Brand Image URL") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Brands\\BrandImage")
   is_featured: Int @doc(description: "Show brand on Featured block")
+  is_display: Int @doc(description: "Show brand on frontend")
   short_description: String @doc(description: "Short Description")
   description: String @doc(description: "Description")
   static_block: String @doc(description: "Static Block")
