@@ -39,6 +39,7 @@ class EntityAttributesForAst implements FieldEntityAttributesInterface
         'main_table.option_id',
         'url_key',
         'is_featured',
+        'is_display',
         'tdv.value',
         'tdv.default_value'
     ];

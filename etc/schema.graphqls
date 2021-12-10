@@ -20,6 +20,7 @@ input MageplazaBrandsFilterInput {
     option_id: FilterTypeInput @doc(description: "Option Id")
     url_key: FilterTypeInput @doc(description: "URL Key")
     is_featured: FilterTypeInput @doc(description: "Show brand on Featured block")
+    is_display: FilterTypeInput @doc(description: "Show brand on frontend")
     value: FilterTypeInput @doc(description: "Brand Name")
     default_value: FilterTypeInput @doc(description: "Brand Default Value")
 }
@@ -40,12 +41,14 @@ type MageplazaBrands {
   url_key: String @doc(description: "Url Key")
   image: String @doc(description: "Brand Image URL") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Brands\\BrandImage")
   is_featured: Int @doc(description: "Show brand on Featured block")
+  is_display: Int @doc(description: "Show brand on frontend")
   short_description: String @doc(description: "Short Description")
   description: String @doc(description: "Description")
   static_block: String @doc(description: "Static Block")
   meta_title: String @doc(description: "Meta Title")
   meta_keywords: String @doc(description: "Meta Keywords")
   meta_description: String @doc(description: "Meta Description")
+  product_quantity: Int @doc(description: "Product Quantity of Brand")
   mpbrandCategories: [MageplazaBrandsCategories] @doc(description: "The categories assigned to a brand") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Categories")
 }
 
@@ -83,7 +86,9 @@ type BrandConfig @doc(description: "The type contains information about a brand 
     show_description : Boolean @doc(description: "Show Brand description on Brand List Page")
     show_product_qty : Boolean @doc(description: "Show product qty on Brand List Page")
     custom_css : String @doc(description: "Custom css on Brand List Page")
+    show_brand_info_in_listing : String @doc(description: "Show brand info on list product page")
     show_brand_info : String @doc(description: "Show brand info on product page")
+    show_brand_info_in_admin : String @doc(description: "Show brand info on product grid at admin")
     logo_width_on_product_page : Int @doc(description: "logo Width on product page")
     logo_height_on_product_page : Int @doc(description: "logo Height on product page")
 }

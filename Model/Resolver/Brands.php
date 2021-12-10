@@ -28,6 +28,7 @@ use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder as 
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Mageplaza\Shopbybrand\Helper\Data;
+use Mageplaza\Shopbybrand\Model\BrandRepository;
 use Mageplaza\ShopbybrandGraphQl\Model\Resolver\Brands\DataProvider;
 
 /**
@@ -48,6 +49,10 @@ class Brands implements ResolverInterface
      * @var SearchCriteriaBuilder
      */
     protected $searchCriteriaBuilder;
+    /**
+     * @var BrandRepository
+     */
+    protected $brandRepository;
 
     /**
      * Brands constructor.
@@ -58,12 +63,14 @@ class Brands implements ResolverInterface
      */
     public function __construct(
         Data $helperData,
+        BrandRepository $brandRepository,
         DataProvider $dataProvider,
         SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->helperData            = $helperData;
         $this->dataProvider          = $dataProvider;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -86,21 +93,22 @@ class Brands implements ResolverInterface
         if ($args['pageSize'] < 1) {
             throw new GraphQlInputException(__('pageSize value must be greater than 0.'));
         }
-        if (!isset($args['filter'])) {
-            throw new GraphQlInputException(__("'filter' input argument is required."));
-        }
+
         $storeId = null;
         if (isset($args['storeId'])) {
             $storeId = $args['storeId'];
         }
+
         $filter = [];
-        foreach ($args['filter'] as $key => $item) {
-            if ($key === 'value' || $key === 'default_value') {
-                $filter['tdv' . $key] = $item;
-            } elseif ($key === 'option_id') {
-                $filter['main_table.option_id'] = $item;
-            } else {
-                $filter[$key] = $item;
+        if (isset($args['filter']) && !empty($args['filter'])) {
+            foreach ($args['filter'] as $key => $item) {
+                if ($key === 'value' || $key === 'default_value') {
+                    $filter['tdv' . $key] = $item;
+                } elseif ($key === 'option_id') {
+                    $filter['main_table.option_id'] = $item;
+                } else {
+                    $filter[$key] = $item;
+                }
             }
         }
         $args['filter'] = $filter;
@@ -110,6 +118,7 @@ class Brands implements ResolverInterface
         $collection = $this->dataProvider->getData($searchCriteria, $storeId);
         $brands     = [];
         foreach ($collection as $brand) {
+            $brand->setProductQuantity(count($this->brandRepository->getProductList($brand->getOptionId())));
             $brandData          = $brand->getData();
             $brandData['model'] = $brand;
             $brands[]           = $brandData;

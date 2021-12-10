@@ -65,7 +65,9 @@ class BrandConfigDataProvider
             'show_description'            => $brandConfigs->getShowDescription(),
             'show_product_qty'            => $brandConfigs->getShowProductQty(),
             'custom_css'                  => $brandConfigs->getCustomCss(),
+            'show_brand_info_in_listing'  => $brandConfigs->getShowBrandInfoInListing(),
             'show_brand_info'             => $brandConfigs->getShowBrandInfo(),
+            'show_brand_info_in_admin'    => $brandConfigs->getShowBrandInfoInAdmin(),
             'logo_width_on_product_page'  => $brandConfigs->getLogoWidthOnProductPage(),
             'logo_height_on_product_page' => $brandConfigs->getLogoHeightOnProductPage()
         ];
