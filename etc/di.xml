@@ -29,4 +29,7 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Builder\Attribute">
+        <plugin name="mp_brand_aggregations_brand" type="Mageplaza\ShopbybrandGraphQl\Plugin\DataProvider\Product\Aggregations" />
+    </type>
 </config>

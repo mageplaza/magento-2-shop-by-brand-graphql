@@ -76,6 +76,10 @@ interface ProductInterface {
     mpbrand: MageplazaBrands @doc(description: "Mageplaza Shopbybrand Attribute data") @resolver(class: "Mageplaza\\ShopbybrandGraphQl\\Model\\Resolver\\Product\\Brand")
 }
 
+type Aggregation {
+    is_mp_brand: Boolean @doc(description: "Mageplaza Shopbybrand Aggregation")
+}
+
 type BrandConfig @doc(description: "The type contains information about a brand config") {
     brand_list_name : String @doc(description: "The Brand List Name assigned to the store")
     brandlist_style : Int @doc(description: "Style on Brand List Page. List: 0, Alphabet: 1")
