@@ -81,18 +81,81 @@ type Aggregation {
 }
 
 type BrandConfig @doc(description: "The type contains information about a brand config") {
-    brand_list_name : String @doc(description: "The Brand List Name assigned to the store")
-    brandlist_style : Int @doc(description: "Style on Brand List Page. List: 0, Alphabet: 1")
-    display_option : Int @doc(description: "The display option on Brand List Page. Logo Only: 0, Logo and Label: 1, Label Only: 2")
-    brand_list_logo_width : Int @doc(description: "Logo Width on Brand List Page")
-    brand_list_logo_height : Int @doc(description: "Logo Height on Brand List Page")
-    color : String @doc(description: "Color on Brand List Page")
-    show_description : Boolean @doc(description: "Show Brand description on Brand List Page")
-    show_product_qty : Boolean @doc(description: "Show product qty on Brand List Page")
-    custom_css : String @doc(description: "Custom css on Brand List Page")
-    show_brand_info_in_listing : String @doc(description: "Show brand info on list product page")
-    show_brand_info : String @doc(description: "Show brand info on product page")
-    show_brand_info_in_admin : String @doc(description: "Show brand info on product grid at admin")
-    logo_width_on_product_page : Int @doc(description: "logo Width on product page")
-    logo_height_on_product_page : Int @doc(description: "logo Height on product page")
+    general: BrandGeneralConfig @doc(description: "Get General Config")
+    brands_page_settings: BrandsPageSettingsConfig @doc(description: "Get All Brands Page Settings Config")
+    brand_info: BrandInformationConfig @doc(description: "Get Brand Information Config")
+    sidebar: SidebarConfig @doc(description: "Get Sidebar Config")
+    seo: SeoConfig @doc(description: "Get SEO Config")
+}
+
+type BrandGeneralConfig {
+    is_enabled: Int @doc(description: "Enabled")
+    brand_attribute: String @doc(description: "Brand Attribute")
+    brand_route: String @doc(description: "Brand Route")
+    brand_link_title: String @doc(description: "Brand Link Title")
+    show_brand_link_in: String @doc(description: "Show brand link in")
+    show_brand_in_category_menu: Int @doc(description: "Show Brands in Category Menu")
+    what_to_show: String @doc(description: "What to show")
+    brand_menu_grid_layout: String @doc(description: "Brand Menu Grid Layout")
+    maximum_brands_to_show: Int @doc(description: "Maximum brands to show")
+    show_brands_without_products_on_menu: Int @doc(description: "Show brands without products on menu")
+    show_brand_info_on_product_listing_page: String @doc(description: "Show Brand Info on Product Listing Page")
+    show_brand_info_in_product_page: String @doc(description: "Show Brand Info in Product Page")
+    show_brand_info_in_product_admin_grid: String @doc(description: "Show Brand Info in Product Admin Grid")
+    brand_logo_width_in_product_page: String @doc(description: "Brand Logo Width in Product Page")
+    brand_logo_height_in_product_page: String @doc(description: "Brand Logo Height in Product Page")
+}
+
+type BrandsPageSettingsConfig {
+    brand_list_name: String @doc(description: "Brand List Name")
+    style_of_brand_list_page: Int @doc(description: "Style of Brand List Page")
+    display_option: Int @doc(description: "Display Option")
+    brand_logo_width: Int @doc(description: "Brand Logo Width")
+    brand_logo_height: Int @doc(description: "Brand Logo Height")
+    style_color: String @doc(description: "Style Color")
+    show_brand_short_description: Int @doc(description: "Show Brand Short Description")
+    show_brands_without_products: Int @doc(description: "Show brands without products")
+    show_brand_product_quantity: Int @doc(description: "Show Brand Product Quantity")
+    show_brand_quick_view_popup: Int @doc(description: "Show Brand Quick View Popup")
+    custom_css: String @doc(description: "Custom CSS")
+    show_brand_categories_filter: Int @doc(description: "Show Brand Categories Filter")
+    show_brand_alphabet_filter: Int @doc(description: "Show Brand Alphabet Filter")
+    brand_filter_alphabet: String @doc(description: "Brand Alphabet")
+    brand_filter_character_set: String @doc(description: "Character Set")
+    show_brand_search_block: Int @doc(description: "Show Search Block")
+    brand_search_min_chars: Int @doc(description: "Min chars")
+    brand_search_number_of_search_result: Int @doc(description: "Number of Search Result")
+    brand_search_show_thumbnail_image: Int @doc(description: "Show Thumbnail Image")
+    show_featured_brands: Int @doc(description: "Show Featured Brands")
+    display_featured_brands_style: Int @doc(description: "Display Featured Brands Style")
+    featured_brand_title: String @doc(description: "Featured Brands Title")
+    display_information_featured_brands: Int @doc(description: "Display Information")
+    show_related_products: Int @doc(description: "Show Related Products")
+    brand_related_title: String @doc(description: "Brand Related Title")
+    brand_related_limit: Int @doc(description: "Brand Related Limit")
+}
+
+type BrandInformationConfig {
+    default_image: String @doc(description: "Default Image")
+    default_block: String @doc(description: "Default Block")
+    show_brand_image_on_brand_page: Int @doc(description: "Show Brand Image On Brand Page")
+    show_brand_description_on_brand_page: String @doc(description: "Show Brand Description On Brand Page")
+    show_brand_static_block_on_brand_page: String @doc(description: "Show Brand Static Block On Brand Page")
+}
+
+type SidebarConfig {
+    show_featured_brands: Int @doc(description: "Show Featured Brands")
+    featured_brand_title: String @doc(description: "Featured Brands Title")
+    featured_brand_show_title: Int @doc(description: "Featured Brand Show Title")
+    show_brand_thumbnail: Int @doc(description: "Show Brand Thumbnail")
+    brand_thumbnail_title: String @doc(description: "Brand Thumbnail Title")
+    brands_qty_limit: Int @doc(description: "Brand's Qty Limit")
+    show_category_brand: Int @doc(description: "Show Category Brand")
+    category_brand_title: String @doc(description: "Category Brand Title")
+    category_qty_limit: Int @doc(description: "Category's Qty Limit")
+    show_brand_category_quantity: Int @doc(description: "Show Brand Category Quantity")
+}
+
+type SeoConfig {
+    add_noindex_to_pagination_pages: Int @doc(description: "Add Noindex to Pagination Pages")
 }
