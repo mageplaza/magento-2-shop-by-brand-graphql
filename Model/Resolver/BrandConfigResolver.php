@@ -26,8 +26,8 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Mageplaza\Shopbybrand\Api\BrandRepositoryInterface;
 use Mageplaza\Shopbybrand\Helper\Data;
-use Mageplaza\ShopbybrandGraphQl\Model\Resolver\Brands\BrandConfigDataProvider;
 
 /**
  * Class BrandConfigResolver
@@ -36,26 +36,27 @@ use Mageplaza\ShopbybrandGraphQl\Model\Resolver\Brands\BrandConfigDataProvider;
 class BrandConfigResolver implements ResolverInterface
 {
     /**
-     * @var BrandConfigDataProvider
-     */
-    protected $brandConfigDataProvider;
-    /**
      * @var Data
      */
     protected $helperData;
 
     /**
+     * @var BrandRepositoryInterface
+     */
+    protected $brandRepository;
+
+    /**
      * BrandConfigResolver constructor.
      *
      * @param Data $helperData
-     * @param BrandConfigDataProvider $brandConfigDataProvider
+     * @param BrandRepositoryInterface $brandRepository
      */
     public function __construct(
         Data $helperData,
-        BrandConfigDataProvider $brandConfigDataProvider
+        BrandRepositoryInterface $brandRepository
     ) {
-        $this->helperData = $helperData;
-        $this->brandConfigDataProvider = $brandConfigDataProvider;
+        $this->helperData      = $helperData;
+        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -76,6 +77,14 @@ class BrandConfigResolver implements ResolverInterface
             $storeId = $args['storeId'];
         }
 
-        return $this->brandConfigDataProvider->getBrandConfigData($storeId);
+        $config = $this->brandRepository->getBrandConfigs($storeId);
+
+        return [
+            'general'              => $config->getGeneral(),
+            'brands_page_settings' => $config->getBrandsPageSettings(),
+            'brand_info'           => $config->getBrandInfo(),
+            'sidebar'              => $config->getSidebar(),
+            'seo'                  => $config->getSeo()
+        ];
     }
 }
