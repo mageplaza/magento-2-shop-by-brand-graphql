@@ -103,7 +103,7 @@ class Brands implements ResolverInterface
         if (isset($args['filter']) && !empty($args['filter'])) {
             foreach ($args['filter'] as $key => $item) {
                 if ($key === 'value' || $key === 'default_value') {
-                    $filter['tdv' . $key] = $item;
+                    $filter['tdv.' . $key] = $item;
                 } elseif ($key === 'option_id') {
                     $filter['main_table.option_id'] = $item;
                 } else {
